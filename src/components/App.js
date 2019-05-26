@@ -4,6 +4,7 @@ import axios from 'axios';
 import SearchBar from './SearchBar';
 
 class App extends React.Component {
+    state = { images: [] };
 
     async onSearchSubmit(term) {
         /* 
@@ -20,13 +21,15 @@ class App extends React.Component {
         
             }
         });
-        console.log(response.data.results);
+        
+        this.setState({ images: response.data.results });   
     }
 
     render() {
         return (
             <div className='ui container'>
-                <SearchBar onSubmit={this.onSearchSubmit} />
+                <SearchBar onSubmit={event => this.onSearchSubmit(event)} />
+                Found: {this.state.images.length} images
             </div>
         )
     }
