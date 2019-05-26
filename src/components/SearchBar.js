@@ -3,7 +3,7 @@ import React from 'react';
 class SearchBar extends React.Component{
     state = { term: '' };
 
-    onFormSubmit = (event) => {
+    onFormSubmit(event){
         // Prevents form from submitting on automatic refresh
         event.preventDefault();
 
@@ -13,7 +13,7 @@ class SearchBar extends React.Component{
     render() {
         return(
             <div className='ui segment'>
-                <form onSubmit={this.onFormSubmit} className='ui form'>
+                <form onSubmit={() => this.onFormSubmit()} className='ui form'>
                     <label>Image Search</label>
                     <input 
                         value={this.state.term}
