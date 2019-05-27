@@ -4,7 +4,7 @@ const ImageList = props => {
     
     const images = props.images.map(image => {
         return (
-            <div>
+            <div key={image.id}>
                 <img src={image.urls.regular} alt={image.alt_description} />
                 <p>{image.description}</p>
             </div>
